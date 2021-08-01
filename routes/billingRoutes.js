@@ -16,7 +16,6 @@ module.exports = (app) => {
         description: "$5 for getting 5 credits !!!",
         source: req.body.id,
       });
-      console.log(charge);
 
       req.user.credits += 5;
       req.user.payment_details.Email = charge.billing_details.name;
