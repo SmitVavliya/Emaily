@@ -1,5 +1,8 @@
 import React from "react";
 
+// input, label, meta and other properties are coming from props which are
+// provided by reduxForm.
+// console.log(props)
 const SurveyField = ({ input, label, meta: { error, touched } }) => {
   return (
     <div>

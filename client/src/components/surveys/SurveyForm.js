@@ -46,6 +46,7 @@ class SurveyForm extends Component {
                   >
                     Blog
                   </span>
+                  {/* handleSubmit is provided by reduxForm. */}
                   <form
                     onSubmit={this.props.handleSubmit(
                       this.props.onSurveySubmit
@@ -152,9 +153,12 @@ class SurveyForm extends Component {
   }
 }
 
+// validate is provided by reduxForm.
 function validate(values) {
   const errors = {};
 
+  // Here always give the name which is given in the form.
+  // Like name = recipients, then errors.recipients.
   errors.recipients = validateEmails(values.recipients || "");
 
   _.each(formFields, ({ name }) => {
