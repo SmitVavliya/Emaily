@@ -160,6 +160,7 @@ function mapStateToProps(state) {
   };
 }
 
+// withRouter is used for navigate from any component to any route.
 export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
 
 {
