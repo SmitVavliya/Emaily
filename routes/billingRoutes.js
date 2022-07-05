@@ -29,13 +29,13 @@ module.exports = (app) => {
       };
 
       sgMail.send(msg).catch((err) => {
-        res.send(err);
+        return res.send(err);
       });
 
       const user = await req.user.save();
-      res.send(user);
+      return res.send(user);
     } catch (err) {
-      res.status(422).send(err);
+      return res.status(422).send(err);
     }
   });
 };

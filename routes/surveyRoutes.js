@@ -17,11 +17,11 @@ module.exports = (app) => {
       recipients: false,
     });
 
-    res.send(surveys);
+    return res.send(surveys);
   });
 
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
-    res.send("Thanks for voting!");
+    return res.send("Thanks for voting!");
   });
 
   // webhook:- webhook is used for when one server communicate with another server.
@@ -68,7 +68,7 @@ module.exports = (app) => {
       })
       .value();
 
-    res.send({});
+    return res.send({});
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
@@ -93,9 +93,9 @@ module.exports = (app) => {
       req.user.credits -= 1;
       const user = await req.user.save();
 
-      res.send(user);
+      return res.send(user);
     } catch (err) {
-      res.status(422).send(err);
+      return res.status(422).send(err);
     }
   });
 
@@ -104,7 +104,7 @@ module.exports = (app) => {
     await Survey.findByIdAndRemove({ _id: _id }, { useFindAndModify: false });
     const user = await req.user.save();
 
-    res.send(user);
+    return res.send(user);
   });
 };
 
